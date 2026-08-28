@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
-import { FORMSPREE_ENDPOINT } from '../config.js';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
@@ -18,7 +17,7 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setStatus('');
     try {
-      const response = await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch('https://formspree.io/f/xzzeyyrg', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(formData),
