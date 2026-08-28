@@ -55,7 +55,7 @@ export default function ContactSection() {
         <button className="btn solid" type="submit" disabled={isSubmitting}>
           {isSubmitting ? 'Sending...' : 'Send Message'} <ArrowUpRight />
         </button>
-        {status ? <p className="form-status">{status}</p> : null}
+        <p className="form-status" role="status" aria-live="polite" aria-atomic="true">{status}</p>
       </form>
     </div>
   );
