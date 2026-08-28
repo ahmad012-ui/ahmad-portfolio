@@ -12,7 +12,7 @@ const SOCIAL_LINKS=[
  {key:'whatsapp',label:'WhatsApp',Icon:FaWhatsapp,href:'https://wa.me/923112607492'},
  {key:'email',label:'Email',Icon:Mail,href:'mailto:codeby.ahmad@gmail.com'},
  {key:'facebook',label:'Facebook',Icon:FaFacebook,href:'https://www.facebook.com/profile.php?id=61581994023105'},
- {key:'x',label:'X / Twitter',Icon:FaTwitter,href:'https://x.com/ahmad_rehmn?t=RF2IG7vyywWwR9c lYRX2Jhg&s=09'}
+ {key:'x',label:'X / Twitter',Icon:FaTwitter,href:'https://x.com/ahmad_rehmn?t=RF2IG7vyyWwW9rclYRX2Jhg&s=09'}
 ];
 const MAIN_SOCIAL=['github','linkedin','facebook','x','instagram','whatsapp','email'];
 function SocialIcons(){return SOCIAL_LINKS.filter(s=>MAIN_SOCIAL.includes(s.key)).map(s=>{const Icon=s.Icon;return <a key={s.key} className="social-icon" href={s.href} aria-label={s.label} title={s.label} target={s.key==='email'?undefined:'_blank'} rel={s.key==='email'?undefined:'noreferrer'}><Icon/></a>})}
