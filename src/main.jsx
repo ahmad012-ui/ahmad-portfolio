@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react';
+import {createRoot} from 'react-dom/client';
 import {ArrowDownRight,ArrowUpRight,Mail,Menu,X,ExternalLink} from 'lucide-react';
 import {FaGithub,FaLinkedin,FaInstagram,FaWhatsapp,FaFacebook,FaTwitter} from 'react-icons/fa6';
 import ContactSection from './components/contact.jsx';
