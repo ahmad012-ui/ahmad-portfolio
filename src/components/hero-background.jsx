@@ -1,5 +1,6 @@
 import React,{useEffect,useRef} from 'react';
 import * as THREE from 'three';
+import './hero-background.css';
 
 export default function HeroBackground(){
  const ref=useRef(null);
@@ -29,8 +30,8 @@ export default function HeroBackground(){
   const pointer={x:0,y:0};
   const target={x:0,y:0};
   const onMove=e=>{
-   target.x=(e.clientX/window.innerWidth-.5)*.34;
-   target.y=(e.clientY/window.innerHeight-.5)*.22;
+   target.x=(e.clientX/window.innerWidth-.5)*.22;
+   target.y=(e.clientY/window.innerHeight-.5)*.14;
   };
   window.addEventListener('pointermove',onMove,{passive:true});
 
@@ -48,16 +49,16 @@ export default function HeroBackground(){
   const clock=new THREE.Clock();
   const animate=()=>{
    const t=clock.getElapsedTime();
-   pointer.x+=(target.x-pointer.x)*.035;
-   pointer.y+=(target.y-pointer.y)*.035;
-   group.rotation.y=t*.055+pointer.x;
-   group.rotation.x=Math.sin(t*.32)*.055-pointer.y;
-   group.rotation.z=Math.sin(t*.18)*.025;
-   const breathe=1+Math.sin(t*.55)*.025;
+   pointer.x+=(target.x-pointer.x)*.025;
+   pointer.y+=(target.y-pointer.y)*.025;
+   group.rotation.y=t*.025+pointer.x;
+   group.rotation.x=Math.sin(t*.22)*.035-pointer.y;
+   group.rotation.z=Math.sin(t*.13)*.018;
+   const breathe=1+Math.sin(t*.42)*.018;
    group.scale.setScalar(breathe);
-   mesh.material.opacity=.12+Math.sin(t*.7)*.025;
-   inner.rotation.y=-t*.075;
-   inner.rotation.x=t*.035;
+   mesh.material.opacity=.13+Math.sin(t*.55)*.018;
+   inner.rotation.y=-t*.035;
+   inner.rotation.x=t*.018;
    renderer.render(scene,camera);
    frame=requestAnimationFrame(animate);
   };
