@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {ArrowDownRight,ArrowUpRight,Mail,Menu,X,ExternalLink} from 'lucide-react';
 import {FaGithub,FaLinkedin,FaInstagram,FaWhatsapp,FaFacebook,FaTwitter} from 'react-icons/fa6';
+import {SpeedInsights} from '@vercel/speed-insights/react';
 import ContactSection from './components/contact.jsx';
 import './styles.css';
 
@@ -39,6 +40,7 @@ function App(){
    <section id="contact" className="section contact"><div className="section-label">06<br/><span>CONTACT</span></div><ContactSection/></section>
   </main>
   <footer><a className="brand" href="#home"><span>AR</span><b>AHMAD REHMAN</b></a><small>© 2026 AHMAD REHMAN. ALL RIGHTS RESERVED.</small><a className="back" href="#home">BACK TO TOP <ArrowDownRight/></a></footer>
+  <SpeedInsights/>
  </div>
 }
 createRoot(document.getElementById('root')).render(<App/>);
