@@ -25,7 +25,16 @@ const projects=[
 const skills={Frontend:['HTML','CSS','JavaScript','React','Tailwind CSS','Bootstrap','jQuery'],Backend:['PHP','C#','ASP.NET MVC','.NET','Entity Framework Core','REST APIs'],Database:['MySQL','SQL Server'],Tools:['Git','GitHub','Figma','VS Code','Visual Studio'],Testing:['Manual Testing','Bug Reporting','Regression Testing','API Testing','UI Testing']};
 function App(){
  const [menu,setMenu]=useState(false),[active,setActive]=useState('home');
- useEffect(()=>{const els=[...document.querySelectorAll('section[id]')];const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&setActive(e.target.id)),{rootMargin:'-35% 0px -55%'});els.forEach(e=>obs.observe(e));return()=>obs.disconnect()},[]);
+ useEffect(()=>{
+  const els=[...document.querySelectorAll('section[id]')];
+  const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&setActive(e.target.id)),{rootMargin:'-35% 0px -55%'});
+  els.forEach(e=>obs.observe(e));
+  const revealEls=[...document.querySelectorAll('.hero-copy,.section-label,.section-inner')];
+  document.documentElement.classList.add('reveal-ready');
+  const revealObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');revealObs.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  revealEls.forEach(e=>revealObs.observe(e));
+  return()=>{obs.disconnect();revealObs.disconnect()}
+ },[]);
  const nav=['about','skills','projects','experience','contact'];
  return <div className="site">
   <header className="nav"><a className="brand" href="#home" onClick={()=>setMenu(false)}><span>AR</span><b>AHMAD REHMAN</b></a><button className="menu" onClick={()=>setMenu(!menu)} aria-label="Toggle navigation">{menu?<X/>:<Menu/>}</button><nav className={menu?'open':''}><a className={active==='home'?'active':''} href="#home" onClick={()=>setMenu(false)}>HOME</a>{nav.map(x=><a key={x} className={active===x?'active':''} href={'#'+x} onClick={()=>setMenu(false)}>{x.toUpperCase()}</a>)}</nav></header>
