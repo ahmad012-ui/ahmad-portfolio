@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {ArrowDownRight,ArrowUpRight,Mail,Menu,X,ExternalLink} from 'lucide-react';
 import {FaGithub,FaLinkedin,FaInstagram,FaWhatsapp,FaFacebook,FaTwitter} from 'react-icons/fa6';
+import {Analytics} from '@vercel/analytics/react';
 import ContactSection from './components/contact.jsx';
 import './styles.css';
 
@@ -28,6 +29,7 @@ function App(){
  useEffect(()=>{const els=[...document.querySelectorAll('section[id]')];const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&setActive(e.target.id)),{rootMargin:'-35% 0px -55%'});els.forEach(e=>obs.observe(e));return()=>obs.disconnect()},[]);
  const nav=['about','skills','projects','experience','contact'];
  return <div className="site">
+  <Analytics />
   <header className="nav"><a className="brand" href="#home" onClick={()=>setMenu(false)}><span>AR</span><b>AHMAD REHMAN</b></a><button className="menu" onClick={()=>setMenu(!menu)} aria-label="Toggle navigation">{menu?<X/>:<Menu/>}</button><nav className={menu?'open':''}><a className={active==='home'?'active':''} href="#home" onClick={()=>setMenu(false)}>HOME</a>{nav.map(x=><a key={x} className={active===x?'active':''} href={'#'+x} onClick={()=>setMenu(false)}>{x.toUpperCase()}</a>)}</nav></header>
   <aside className="index"><a href="#home">01<span>HOME</span></a><a href="#about">02<span>ABOUT</span></a><a href="#skills">03<span>SKILLS</span></a><a href="#projects">04<span>PROJECTS</span></a><a href="#experience">05<span>EXPERIENCE</span></a><a href="#contact">06<span>CONTACT</span></a></aside>
   <main>
