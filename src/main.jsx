@@ -1,21 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import {
-  ArrowDownRight,
-  ArrowUpRight,
-  ExternalLink,
-  Mail,
-  Menu,
-  X,
-} from 'lucide-react';
-import {
-  FaFacebook,
-  FaGithub,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-  FaWhatsapp,
-} from 'react-icons/fa6';
+import { ArrowDownRight, ArrowUpRight, ExternalLink, Mail, Menu, X } from 'lucide-react';
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa6';
 import ContactSection from './components/contact.jsx';
 import HeroBackground from './components/hero-background.jsx';
 import './styles.css';
@@ -65,15 +51,7 @@ const SOCIAL_LINKS = [
   },
 ];
 
-const MAIN_SOCIAL = [
-  'github',
-  'linkedin',
-  'facebook',
-  'x',
-  'instagram',
-  'whatsapp',
-  'email',
-];
+const MAIN_SOCIAL = [ 'github', 'linkedin', 'facebook', 'x', 'instagram', 'whatsapp', 'email' ];
 
 const NAV_ITEMS = ['about', 'skills', 'projects', 'experience', 'contact'];
 
@@ -127,32 +105,11 @@ const PROJECTS = [
 ];
 
 const SKILLS = {
-  Frontend: [
-    'HTML',
-    'CSS',
-    'JavaScript',
-    'React',
-    'Tailwind CSS',
-    'Bootstrap',
-    'jQuery',
-  ],
-  Backend: [
-    'PHP',
-    'C#',
-    'ASP.NET MVC',
-    '.NET',
-    'Entity Framework Core',
-    'REST APIs',
-  ],
+  Frontend: [ 'HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Bootstrap', 'jQuery' ],
+  Backend: [ 'PHP', 'C#', 'ASP.NET MVC', '.NET', 'Entity Framework Core', 'REST APIs' ],
   Database: ['MySQL', 'SQL Server'],
   Tools: ['Git', 'GitHub', 'Figma', 'VS Code', 'Visual Studio'],
-  Testing: [
-    'Manual Testing',
-    'Bug Reporting',
-    'Regression Testing',
-    'API Testing',
-    'UI Testing',
-  ],
+  Testing: [ 'Manual Testing', 'Bug Reporting', 'Regression Testing', 'API Testing', 'UI Testing' ],
 };
 
 function SocialIcons() {
