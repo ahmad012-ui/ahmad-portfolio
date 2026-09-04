@@ -14,7 +14,6 @@ html[data-theme="light"]{
   --theme-muted:#555;
 }
 
-/* Strong light-mode contrast while preserving the existing layout. */
 html[data-theme="light"] body,
 html[data-theme="light"] .site,
 html[data-theme="light"] .index{background:var(--theme-bg)!important;color:var(--theme-text)!important}
@@ -79,7 +78,7 @@ html[data-theme="light"] .orb{border-color:#ddd!important}
 html[data-theme="light"] .orb2{border-color:#ccc!important}
 html[data-theme="light"] .cross{color:#d5d5d0!important}
 
-/* Switcher XXXV: fixed rounded track + a white half-length stroke travelling around it. */
+/* Switcher XXXV-inspired track: full-width, hollow centre, only the active line moves. */
 .theme-toggle{
   position:relative;
   width:74px;
@@ -89,12 +88,12 @@ html[data-theme="light"] .cross{color:#d5d5d0!important}
   padding:0;
   border:0;
   border-radius:999px;
-  background:#000;
+  background:transparent;
   cursor:pointer;
   overflow:hidden;
   isolation:isolate;
   box-shadow:none;
-  transition:transform .2s ease,filter .35s ease;
+  transition:filter .25s ease;
 }
 
 .theme-toggle-svg{
@@ -113,22 +112,22 @@ html[data-theme="light"] .cross{color:#d5d5d0!important}
   vector-effect:non-scaling-stroke;
 }
 
-/* The track never moves or morphs. Only the white stroke travels. */
+/* The track reaches the exact left/right edges. The centre is transparent, so it inherits the page background. */
 .theme-toggle-track{stroke:#444446}
 .theme-toggle-active{
   stroke:#f4f4f4;
   stroke-dasharray:50 50;
-  stroke-dashoffset:0;
-  transition:stroke-dashoffset .72s cubic-bezier(.65,0,.2,1);
+  stroke-dashoffset:50;
+  transition:stroke-dashoffset .9s cubic-bezier(.76,0,.24,1);
 }
 
-/* Default dark state: white C sits on the left. */
-.theme-toggle.is-dark .theme-toggle-active{stroke-dashoffset:50}
-.theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:0}
+/* Dark = white C on the left. Light = dark C on the right. */
+.theme-toggle.is-dark .theme-toggle-active{stroke-dashoffset:50;stroke:#f4f4f4}
+html[data-theme="light"] .theme-toggle-track{stroke:#555}
+.theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:0;stroke:#111}
 
 .theme-toggle.no-motion .theme-toggle-active{transition:none!important}
-.theme-toggle:hover{transform:scale(1.035);filter:brightness(1.06)}
-.theme-toggle:active{transform:scale(.97)}
+.theme-toggle:hover{filter:brightness(1.08)}
 .theme-toggle:focus-visible{outline:1px solid #888;outline-offset:4px}
 
 @media(max-width:900px){
