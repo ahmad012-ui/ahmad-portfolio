@@ -23,15 +23,12 @@ function initThemeToggle() {
   button.className = 'theme-toggle no-motion';
   button.setAttribute('title', 'Switch theme');
 
-  // The reference animation is a single white line travelling around a fixed
-  // rounded track. The cursor/metallic circle seen in the reference is not
-  // part of the control, so it is intentionally not recreated here.
   button.innerHTML = `
     <svg class="theme-toggle-svg" viewBox="0 0 74 42" aria-hidden="true" focusable="false">
       <path class="theme-toggle-track" pathLength="100"
-        d="M37 7H41A14 14 0 0 1 55 21A14 14 0 0 1 41 35H37A14 14 0 0 1 23 21A14 14 0 0 1 37 7Z" />
+        d="M7 21A14 14 0 0 1 21 7H53A14 14 0 0 1 67 21A14 14 0 0 1 53 35H21A14 14 0 0 1 7 21Z" />
       <path class="theme-toggle-active" pathLength="100"
-        d="M37 7H41A14 14 0 0 1 55 21A14 14 0 0 1 41 35H37A14 14 0 0 1 23 21A14 14 0 0 1 37 7Z" />
+        d="M7 21A14 14 0 0 1 21 7H53A14 14 0 0 1 67 21A14 14 0 0 1 53 35H21A14 14 0 0 1 7 21Z" />
     </svg>
   `;
 
