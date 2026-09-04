@@ -28,7 +28,7 @@ function initThemeToggle() {
       <path class="theme-toggle-track"
         d="M2.5 21A18.5 18.5 0 0 1 21 2.5H53A18.5 18.5 0 0 1 71.5 21A18.5 18.5 0 0 1 53 39.5H21A18.5 18.5 0 0 1 2.5 21Z" />
       <path class="theme-toggle-active"
-        pathLength="200"
+        pathLength="100"
         d="M2.5 21A18.5 18.5 0 0 1 21 2.5H53A18.5 18.5 0 0 1 71.5 21A18.5 18.5 0 0 1 53 39.5H21A18.5 18.5 0 0 1 2.5 21Z" />
     </svg>
   `;
