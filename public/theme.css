@@ -78,7 +78,7 @@ html[data-theme="light"] .orb{border-color:#ddd!important}
 html[data-theme="light"] .orb2{border-color:#ccc!important}
 html[data-theme="light"] .cross{color:#d5d5d0!important}
 
-/* Fixed capsule + traveling C stroke. The track never moves; only its white segment does. */
+/* Fixed capsule + one-half traveling stroke. The capsule never moves. */
 .theme-toggle{
   position:relative;
   width:74px;
@@ -111,20 +111,20 @@ html[data-theme="light"] .theme-toggle-track{stroke:#777}
 .theme-toggle-active{stroke:#f4f4f4}
 html[data-theme="light"] .theme-toggle-active{stroke:#111}
 
-/*
-  The active C is a dash cut from the SAME fixed capsule path.
-  It therefore follows the capsule outline instead of translating as a separate shape.
-  125 units gives the C its long top/bottom arms while keeping the centre hollow.
-*/
+/* pathLength=100 makes this exact: 50 units painted, 50 units empty. */
 .theme-toggle-active{
-  stroke-dasharray:125 55.239;
-  stroke-dashoffset:62.5;
-  transition:stroke-dashoffset .8s cubic-bezier(.65,0,.2,1);
+  stroke-dasharray:50 50;
+  stroke-dashoffset:0;
+  animation:theme-toggle-orbit 3s linear infinite;
 }
 
-/* Move the C exactly half the capsule circumference to the opposite side. */
-.theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:-27.62}
-.theme-toggle.no-motion .theme-toggle-active{transition:none!important}
+/* Travel one complete capsule circumference, then repeat seamlessly. */
+@keyframes theme-toggle-orbit{
+  from{stroke-dashoffset:0}
+  to{stroke-dashoffset:-100}
+}
+
+.theme-toggle.no-motion .theme-toggle-active{animation:none!important}
 .theme-toggle:hover{filter:brightness(1.08)}
 .theme-toggle:focus-visible{outline:1px solid #888;outline-offset:4px}
 
@@ -135,6 +135,8 @@ html[data-theme="light"] .theme-toggle-active{stroke:#111}
   .theme-toggle{right:58px;top:18px;width:62px;height:35px;flex-basis:62px}
   .theme-toggle-track,
   .theme-toggle-active{stroke-width:3.5}
-  .theme-toggle-active{stroke-dasharray:104.5 45.739;stroke-dashoffset:52.25}
-  .theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:-24.37}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .theme-toggle-active{animation:none!important}
 }
