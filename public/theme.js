@@ -54,9 +54,18 @@ function initThemeToggle() {
   return true;
 }
 
-const observer = new MutationObserver(() => {
-  if (initThemeToggle()) observer.disconnect();
-});
+function startThemeToggle() {
+  if (initThemeToggle()) return;
 
-observer.observe(document.body, { childList: true, subtree: true });
-initThemeToggle();
+  const observer = new MutationObserver(() => {
+    if (initThemeToggle()) observer.disconnect();
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startThemeToggle, { once: true });
+} else {
+  startThemeToggle();
+}
