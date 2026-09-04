@@ -79,7 +79,7 @@ html[data-theme="light"] .orb{border-color:#ddd!important}
 html[data-theme="light"] .orb2{border-color:#ccc!important}
 html[data-theme="light"] .cross{color:#d5d5d0!important}
 
-/* Switcher XXXV-inspired: split outer capsule + dark inner cavity + metallic knob. */
+/* Switcher XXXV: fixed rounded track + a white half-length stroke travelling around it. */
 .theme-toggle{
   position:relative;
   width:74px;
@@ -89,60 +89,53 @@ html[data-theme="light"] .cross{color:#d5d5d0!important}
   padding:0;
   border:0;
   border-radius:999px;
-  background:linear-gradient(90deg,#f4f4f4 0 50%,#444446 50% 100%);
+  background:#000;
   cursor:pointer;
   overflow:hidden;
   isolation:isolate;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035);
-  transition:transform .2s ease,filter .4s ease;
+  box-shadow:none;
+  transition:transform .2s ease,filter .35s ease;
 }
 
-/* Inner black opening — this is what makes the white half read as a C. */
-.theme-toggle::before{
-  content:"";
-  position:absolute;
-  left:13px;
-  right:13px;
-  top:9px;
-  bottom:9px;
-  border-radius:999px;
-  background:#000;
-  z-index:0;
-  transition:background .45s ease,transform .62s cubic-bezier(.16,1,.3,1);
+.theme-toggle-svg{
+  display:block;
+  width:100%;
+  height:100%;
+  overflow:visible;
 }
 
-/* Metallic ball. */
-.theme-toggle::after{
-  content:"";
-  position:absolute;
-  top:7px;
-  left:7px;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:radial-gradient(circle at 35% 28%,#e3e3e3 0,#a7a7a7 32%,#737373 68%,#555 100%);
-  box-shadow:0 3px 8px rgba(0,0,0,.45),inset 0 1px 1px rgba(255,255,255,.65);
-  transform:translateX(32px);
-  z-index:2;
-  transition:transform .65s cubic-bezier(.16,1,.3,1),background .45s ease,box-shadow .45s ease;
+.theme-toggle-track,
+.theme-toggle-active{
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:14;
+  vector-effect:non-scaling-stroke;
 }
 
-.theme-toggle:hover{transform:scale(1.035);filter:brightness(1.04)}
+/* The track never moves or morphs. Only the white stroke travels. */
+.theme-toggle-track{stroke:#444446}
+.theme-toggle-active{
+  stroke:#f4f4f4;
+  stroke-dasharray:50 50;
+  stroke-dashoffset:0;
+  transition:stroke-dashoffset .72s cubic-bezier(.65,0,.2,1);
+}
+
+/* Default dark state: white C sits on the left. */
+.theme-toggle.is-dark .theme-toggle-active{stroke-dashoffset:50}
+.theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:0}
+
+.theme-toggle.no-motion .theme-toggle-active{transition:none!important}
+.theme-toggle:hover{transform:scale(1.035);filter:brightness(1.06)}
 .theme-toggle:active{transform:scale(.97)}
 .theme-toggle:focus-visible{outline:1px solid #888;outline-offset:4px}
-
-/* Light state: ball glides to the left; the capsule itself stays visually identical to the reference. */
-html[data-theme="light"] .theme-toggle::after{
-  transform:translateX(0);
-  background:radial-gradient(circle at 35% 28%,#bdbdbd 0,#929292 35%,#777 70%,#666 100%);
-  box-shadow:0 3px 8px rgba(0,0,0,.28),inset 0 1px 1px rgba(255,255,255,.65);
-}
 
 @media(max-width:900px){
   .theme-toggle{position:absolute;right:68px;top:14px;margin-left:0}
 }
 @media(max-width:540px){
   .theme-toggle{right:58px;top:18px;width:62px;height:35px;flex-basis:62px}
-  .theme-toggle::before{left:11px;right:11px;top:8px;bottom:8px}
-  .theme-toggle::after{width:24px;height:24px;top:5.5px;left:5.5px;transform:translateX(27px)}
+  .theme-toggle-track,
+  .theme-toggle-active{stroke-width:12}
 }
