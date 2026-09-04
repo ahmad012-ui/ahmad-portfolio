@@ -78,7 +78,7 @@ html[data-theme="light"] .orb{border-color:#ddd!important}
 html[data-theme="light"] .orb2{border-color:#ccc!important}
 html[data-theme="light"] .cross{color:#d5d5d0!important}
 
-/* Thin Switcher XXXV-inspired C: hollow centre, full-width track, only the C moves. */
+/* Fixed capsule + traveling C stroke. The track never moves; only its white segment does. */
 .theme-toggle{
   position:relative;
   width:74px;
@@ -102,27 +102,29 @@ html[data-theme="light"] .cross{color:#d5d5d0!important}
   fill:none;
   stroke-linecap:round;
   stroke-linejoin:round;
-  stroke-width:6;
+  stroke-width:4;
   vector-effect:non-scaling-stroke;
 }
 
-/* Fixed capsule. Its centre remains transparent and shows the page background. */
 .theme-toggle-track{stroke:#444446}
 html[data-theme="light"] .theme-toggle-track{stroke:#777}
-
-/* The active element is a genuine C-shaped line, not a filled knob or dash. */
 .theme-toggle-active{stroke:#f4f4f4}
 html[data-theme="light"] .theme-toggle-active{stroke:#111}
 
-.theme-toggle-active-wrap{
-  transform:translateX(0);
-  transition:transform .8s cubic-bezier(.65,0,.2,1);
-  transform-origin:center;
+/*
+  The active C is a dash cut from the SAME fixed capsule path.
+  It therefore follows the capsule outline instead of translating as a separate shape.
+  125 units gives the C its long top/bottom arms while keeping the centre hollow.
+*/
+.theme-toggle-active{
+  stroke-dasharray:125 55.239;
+  stroke-dashoffset:62.5;
+  transition:stroke-dashoffset .8s cubic-bezier(.65,0,.2,1);
 }
 
-/* Dark: C at the left. Light: same C travels smoothly to the right. */
-.theme-toggle.is-light .theme-toggle-active-wrap{transform:translateX(30px)}
-.theme-toggle.no-motion .theme-toggle-active-wrap{transition:none!important}
+/* Move the C exactly half the capsule circumference to the opposite side. */
+.theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:-27.62}
+.theme-toggle.no-motion .theme-toggle-active{transition:none!important}
 .theme-toggle:hover{filter:brightness(1.08)}
 .theme-toggle:focus-visible{outline:1px solid #888;outline-offset:4px}
 
@@ -132,7 +134,7 @@ html[data-theme="light"] .theme-toggle-active{stroke:#111}
 @media(max-width:540px){
   .theme-toggle{right:58px;top:18px;width:62px;height:35px;flex-basis:62px}
   .theme-toggle-track,
-  .theme-toggle-active{stroke-width:5}
-  .theme-toggle-active-wrap{transform:translateX(25px)}
-  .theme-toggle.is-light .theme-toggle-active-wrap{transform:translateX(25px)}
+  .theme-toggle-active{stroke-width:3.5}
+  .theme-toggle-active{stroke-dasharray:104.5 45.739;stroke-dashoffset:52.25}
+  .theme-toggle.is-light .theme-toggle-active{stroke-dashoffset:-24.37}
 }
