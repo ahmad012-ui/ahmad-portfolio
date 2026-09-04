@@ -12,7 +12,7 @@ function setTheme(theme) {
 
 setTheme(getInitialTheme());
 
-a function initThemeToggle() {
+function initThemeToggle() {
   if (document.querySelector('.theme-toggle')) return true;
 
   const nav = document.querySelector('.nav');
