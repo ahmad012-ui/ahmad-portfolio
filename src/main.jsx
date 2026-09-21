@@ -4,16 +4,17 @@ import { ArrowDownRight, ArrowUpRight, ExternalLink, Mail, Menu, X } from 'lucid
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaWhatsapp } from 'react-icons/fa6';
 import ContactSection from './components/contact.jsx';
 import HeroBackground from './components/hero-background.jsx';
+import SocialHoverCard from './components/social-hover-card.jsx';
 import './styles.css';
 
 const SOCIAL_LINKS = [
-  { key: 'github', label: 'GitHub', Icon: FaGithub, href: 'https://github.com/ahmad012-ui' },
-  { key: 'linkedin', label: 'LinkedIn', Icon: FaLinkedin, href: 'https://www.linkedin.com/in/ahmad-rehman-29b268316/' },
-  { key: 'instagram', label: 'Instagram', Icon: FaInstagram, href: 'https://www.instagram.com/ahmad.rehmn/' },
-  { key: 'whatsapp', label: 'WhatsApp', Icon: FaWhatsapp, href: 'https://wa.me/923112607492' },
-  { key: 'email', label: 'Email', Icon: Mail, href: 'mailto:codeby.ahmad@gmail.com' },
-  { key: 'facebook', label: 'Facebook', Icon: FaFacebook, href: 'https://www.facebook.com/profile.php?id=61581994023105' },
-  { key: 'x', label: 'X / Twitter', Icon: FaTwitter, href: 'https://x.com/ahmad_rehmn?t=RF2IG7vyyWwW9rclYRX2Jhg&s=09' },
+  { key: 'github', label: 'GitHub', Icon: FaGithub, href: 'https://github.com/ahmad012-ui', handle: '@ahmad012-ui', description: 'Explore my code, projects and development work.' },
+  { key: 'linkedin', label: 'LinkedIn', Icon: FaLinkedin, href: 'https://www.linkedin.com/in/ahmad-rehman-29b268316/', handle: 'Ahmad Rehman', description: 'Connect with me professionally and follow my career journey.' },
+  { key: 'instagram', label: 'Instagram', Icon: FaInstagram, href: 'https://www.instagram.com/ahmad.rehmn/', handle: '@ahmad.rehmn', description: 'A more personal look at what I share outside of work.' },
+  { key: 'whatsapp', label: 'WhatsApp', Icon: FaWhatsapp, href: 'https://wa.me/923112607492', handle: '+92 311 2607492', description: 'Send me a direct message for a quick conversation.' },
+  { key: 'email', label: 'Email', Icon: Mail, href: 'mailto:codeby.ahmad@gmail.com', handle: 'codeby.ahmad@gmail.com', description: 'Reach me directly for work, projects or opportunities.' },
+  { key: 'facebook', label: 'Facebook', Icon: FaFacebook, href: 'https://www.facebook.com/profile.php?id=61581994023105', handle: 'Ahmad Rehman', description: 'Find me on Facebook and connect with me there.' },
+  { key: 'x', label: 'X / Twitter', Icon: FaTwitter, href: 'https://x.com/ahmad_rehmn?t=RF2IG7vyyWwW9rclYRX2Jhg&s=09', handle: '@ahmad_rehmn', description: 'Follow my updates and thoughts on X.' },
 ];
 
 const MAIN_SOCIAL = ['github', 'linkedin', 'facebook', 'x', 'instagram', 'whatsapp', 'email'];
@@ -30,7 +31,7 @@ const PROJECTS = [
 const SKILLS = { Frontend: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS', 'Bootstrap', 'jQuery'], Backend: ['PHP', 'C#', 'ASP.NET MVC', '.NET', 'Entity Framework Core', 'REST APIs'], Database: ['MySQL', 'SQL Server'], Tools: ['Git', 'GitHub', 'Figma', 'VS Code', 'Visual Studio'], Testing: ['Manual Testing', 'Bug Reporting', 'Regression Testing', 'API Testing', 'UI Testing'] };
 
 function SocialIcons() {
-  return SOCIAL_LINKS.filter(({ key }) => MAIN_SOCIAL.includes(key)).sort((a, b) => MAIN_SOCIAL.indexOf(a.key) - MAIN_SOCIAL.indexOf(b.key)).map(({ key, label, Icon, href }) => <a key={key} className="social-icon" href={href} aria-label={label} title={label} target={key === 'email' ? undefined : '_blank'} rel={key === 'email' ? undefined : 'noreferrer'}><Icon /></a>);
+  return SOCIAL_LINKS.filter(({ key }) => MAIN_SOCIAL.includes(key)).sort((a, b) => MAIN_SOCIAL.indexOf(a.key) - MAIN_SOCIAL.indexOf(b.key)).map((social) => <SocialHoverCard key={social.key} social={social} />);
 }
 
 function Navigation({ menu, setMenu, active }) {
