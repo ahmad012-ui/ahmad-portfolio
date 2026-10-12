@@ -9,7 +9,7 @@ import './styles.css';
 
 const SOCIAL_LINKS = [
   { key: 'github', label: 'GitHub', Icon: FaGithub, href: 'https://github.com/ahmad012-ui', handle: '@ahmad012-ui', description: 'Explore my code, projects and development work.' },
-  { key: 'linkedin', label: 'LinkedIn', Icon: FaLinkedin, href: 'https://www.linkedin.com/in/ahmad-rehman-29b268316/', handle: 'Ahmad Rehman', description: 'Connect with me professionally and follow my career journey.' },
+  { key: 'linkedin', label: 'LinkedIn', Icon: FaLinkedin, href: 'www.linkedin.com/in/ahmad-rehman-29b268316', handle: 'Ahmad Rehman', description: 'Connect with me professionally and follow my career journey.' },
   { key: 'instagram', label: 'Instagram', Icon: FaInstagram, href: 'https://www.instagram.com/ahmad.rehmn/', handle: '@ahmad.rehmn', description: 'A more personal look at what I share outside of work.' },
   { key: 'whatsapp', label: 'WhatsApp', Icon: FaWhatsapp, href: 'https://wa.me/923112607492', handle: '+92 311 2607492', description: 'Send me a direct message for a quick conversation.' },
   { key: 'email', label: 'Email', Icon: Mail, href: 'mailto:codeby.ahmad@gmail.com', handle: 'codeby.ahmad@gmail.com', description: 'Reach me directly for work, projects or opportunities.' },
